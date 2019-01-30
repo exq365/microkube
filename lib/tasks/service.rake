@@ -215,6 +215,7 @@ namespace :service do
       Rake::Task["service:frontend"].invoke('start')
       Rake::Task["service:tower"].invoke('start')
       Rake::Task["service:utils"].invoke('start')
+      Rake::Task["service:applogicjava"].invoke('start')
     end
 
     def stop
@@ -224,7 +225,8 @@ namespace :service do
       Rake::Task["service:app"].invoke('stop')
       Rake::Task["service:frontend"].invoke('stop')
       Rake::Task["service:tower"].invoke('stop')
-      Rake::Task["service:utils"].invoke('start')
+      Rake::Task["service:utils"].invoke('stop')
+      Rake::Task["service:applogicjava"].invoke('stop')
     end
 
     @switch.call(args, method(:start), method(:stop))
