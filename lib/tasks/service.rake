@@ -183,6 +183,23 @@ namespace :service do
     @switch.call(args, method(:start), method(:stop))
   end
 
+  desc '[Optional] Run applogicjava'
+  task :applogicjava, [:command] do |task, args|
+    args.with_defaults(:command => 'start')
+
+    def start
+      puts '----- Starting applogicjava -----'
+      sh 'docker-compose up -d applogicjava'
+    end
+
+    def stop
+      puts '----- Stopping applogicjava -----'
+      sh 'docker-compose rm -fs applogicjava'
+    end
+
+    @switch.call(args, method(:start), method(:stop))
+  end
+
   desc 'Run the micro app with dependencies (does not run Optional)'
   task :all, [:command] do |task, args|
     args.with_defaults(:command => 'start')

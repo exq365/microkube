@@ -28,3 +28,8 @@ services:
     volumes:
       - ../config/secrets:/secrets:ro
       - ../config/barong/seeds.yml:/home/app/config/seeds.yml
+
+  applogicjava:
+    image: "<%= @config['images']['applogicjava'] %>"
+    env_file:
+      - ../config/applogicjava.env
