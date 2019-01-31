@@ -11,7 +11,7 @@ images:
   frontend: rubykube/mikroapp:0.1.5
   tower: rubykube/tower:0.1.8
   postmaster: quay.io/openware/postmaster:0.0.3
-  applogicjava: gcr.io/exq365-stage-218912/applogic-java:latest
+  applogicjava: applogic-java:latest
 vendor:
   frontend: https://github.com/rubykube/mikroapp.git
 storage:
