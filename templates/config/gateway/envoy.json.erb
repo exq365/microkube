@@ -109,6 +109,32 @@
                 "connect_timeout": "3s",
                 "lb_policy": "ROUND_ROBIN",
                 "load_assignment": {
+                    "cluster_name": "cluster_applogicjava_8080",
+                    "endpoints": [
+                        {
+                            "lb_endpoints": [
+                                {
+                                    "endpoint": {
+                                        "address": {
+                                            "socket_address": {
+                                                "address": "applogicjava",
+                                                "port_value": 8080,
+                                                "protocol": "TCP"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "name": "cluster_applogicjava_8080",
+                "type": "STRICT_DNS"
+            },
+            {
+                "connect_timeout": "3s",
+                "lb_policy": "ROUND_ROBIN",
+                "load_assignment": {
                     "cluster_name": "cluster_ranger_8080",
                     "endpoints": [
                         {
@@ -311,6 +337,39 @@
                                                                 "clusters": [
                                                                     {
                                                                         "name": "cluster_peatio_8000",
+                                                                        "weight": 100.0
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "match": {
+                                                            "case_sensitive": true,
+                                                            "headers": [
+                                                                {
+                                                                    "exact_match": "<%= @config['app']['subdomain'] %>.<%= @config['app']['domain'] %>",
+                                                                    "name": ":authority"
+                                                                }
+                                                            ],
+                                                            "prefix": "/api/v1/applogicjava"
+                                                        },
+                                                        "route": {
+                                                            "cors": {
+                                                                "allow_methods": "POST, GET, OPTIONS",
+                                                                "allow_origin": [
+                                                                    "*"
+                                                                ],
+                                                                "enabled": true,
+                                                                "max_age": "6400"
+                                                            },
+                                                            "prefix_rewrite": "/api/v1/",
+                                                            "priority": null,
+                                                            "timeout": "3.000s",
+                                                            "weighted_clusters": {
+                                                                "clusters": [
+                                                                    {
+                                                                        "name": "cluster_applogicjava_8080",
                                                                         "weight": 100.0
                                                                     }
                                                                 ]

@@ -29,3 +29,5 @@ services:
     image: "<%= @config['images']['applogicjava'] %>"
     env_file:
       - ../config/applogicjava.env
+    expose:
+      - "8080"
