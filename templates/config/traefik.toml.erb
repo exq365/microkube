@@ -31,3 +31,16 @@ usebindportip = true
 [acme.httpChallenge]
 entryPoint = "http"
 <% end -%>
+
+[file]
+
+[backends]
+  [backends.backend1]
+    [backends.backend1.servers.server1]
+    url = "http://www.exq365.com"
+
+[frontends]
+  [frontends.frontend1]
+  backend = "backend1"
+    [frontends.frontend1.routes.test_1]
+    rule = "PathPrefix:/;Host:www.app.local"
