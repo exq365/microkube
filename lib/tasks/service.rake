@@ -125,23 +125,6 @@ namespace :service do
     @switch.call(args, method(:start), method(:stop))
   end
 
-  desc 'Run the frontend application'
-  task :frontend, [:command] do |task, args|
-    args.with_defaults(:command => 'start')
-
-    def start
-      puts '----- Starting the frontend -----'
-      sh 'docker-compose up -d frontend'
-    end
-
-    def stop
-      puts '----- Stopping the frontend -----'
-      sh 'docker-compose rm -fs frontend'
-    end
-
-    @switch.call(args, method(:start), method(:stop))
-  end
-
   desc 'Run the tower application'
   task :tower, [:command] do |task, args|
     args.with_defaults(:command => 'start')
@@ -176,6 +159,23 @@ namespace :service do
     @switch.call(args, method(:start), method(:stop))
   end
 
+    desc '[Optional] Run applogicjava'
+    task :applogicjava, [:command] do |task, args|
+      args.with_defaults(:command => 'start')
+  
+      def start
+        puts '----- Starting applogicjava -----'
+        sh 'docker-compose up -d applogicjava'
+      end
+  
+      def stop
+        puts '----- Stopping applogicjava -----'
+        sh 'docker-compose rm -fs applogicjava'
+      end
+  
+      @switch.call(args, method(:start), method(:stop))
+    end
+  
   desc 'Run the micro app with dependencies (does not run Optional)'
   task :all, [:command] => 'render:config' do |task, args|
     args.with_defaults(:command => 'start')
@@ -187,10 +187,10 @@ namespace :service do
       sleep(5)
       Rake::Task["service:setup"].invoke('start')
       Rake::Task["service:app"].invoke('start')
-      Rake::Task["service:frontend"].invoke('start')
       Rake::Task["service:tower"].invoke('start')
       Rake::Task["service:utils"].invoke('start')
       Rake::Task["service:daemons"].invoke('start')
+      Rake::Task["service:applogicjava"].invoke('start')
     end
 
     def stop
@@ -198,10 +198,10 @@ namespace :service do
       Rake::Task["service:backend"].invoke('stop')
       Rake::Task["service:setup"].invoke('stop')
       Rake::Task["service:app"].invoke('stop')
-      Rake::Task["service:frontend"].invoke('stop')
       Rake::Task["service:tower"].invoke('stop')
       Rake::Task["service:utils"].invoke('stop')
       Rake::Task["service:daemons"].invoke('stop')
+      Rake::Task["service:applogicjava"].invoke('stop')
     end
 
     @switch.call(args, method(:start), method(:stop))

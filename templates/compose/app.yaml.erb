@@ -7,6 +7,8 @@ services:
       - ../config/peatio.env
     expose:
       - "8000"
+    ports:
+      - "8000:8000"
     volumes:
       - ../config/peatio/seed:/opt/peatio/config/seed
       - ../config/peatio/management_api_v1.yml:/opt/peatio/config/management_api_v1.yml
@@ -24,3 +26,10 @@ services:
       - ../config/secrets:/secrets:ro
       - ../config/barong/seeds.yml:/home/app/config/seeds.yml
       - ../config/barong/authz_rules.yml:/home/app/config/authz_rules.yml
+
+  applogicjava:
+    image: "<%= @config['images']['applogicjava'] %>"
+    env_file:
+      - ../config/applogicjava.env
+    expose:
+      - "8080"

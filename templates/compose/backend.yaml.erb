@@ -6,6 +6,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ../config/mysql:/etc/mysql/conf.d
+      - ../config/mysql/init-applogic-mysql.sql:/docker-entrypoint-initdb.d/init-applogic-mysql.sql
     ports:
       - "3306:3306"
     environment:

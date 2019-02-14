@@ -12,6 +12,7 @@ images:
   tower: rubykube/tower:0.1.8
   postmaster: quay.io/openware/postmaster:0.0.6
   components-docs: gcr.io/openware-production/components-docs:latest
+  applogicjava: applogic-java:latest
 vendor:
   frontend: git@github.com:openware/baseapp.git
 storage:
