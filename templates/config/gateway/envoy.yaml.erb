@@ -28,10 +28,10 @@ static_resources:
                   cluster: peatio
                   prefix_rewrite: "/api/v2/"
               - match:
-                  prefix: "/api/v1/applogicjava"
+                  prefix: "/api/v2/extension"
                 route:
                   cluster: applogicjava
-                  prefix_rewrite: "/api/v1"
+                  prefix_rewrite: "/api/v2"
               - match:
                   prefix: "/admin"
                 route:
