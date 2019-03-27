@@ -7,7 +7,7 @@ ssl:
   email: "support@example.com"
 images:
   peatio: rubykube/peatio:2.0.23-alpha
-  barong: rubykube/barong:2.0.39-alpha
+  barong: rubykube/barong:2.0.51
   frontend: gcr.io/openware-production/baseapp:2.1.32
   tower: rubykube/tower:0.1.8
   postmaster: quay.io/openware/postmaster:0.0.6

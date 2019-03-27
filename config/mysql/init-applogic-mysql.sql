@@ -78,4 +78,4 @@ CREATE TABLE user_banks
   )
 engine = innodb;
 
-create index banks_user_uid_idx on user_banks(user_uid);
+create index user_banks_user_uid_idx on user_banks(user_uid);
