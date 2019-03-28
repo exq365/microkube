@@ -65,7 +65,7 @@ engine = innodb;
 create index peatio_trades_batch_id_idx on peatio_trades(batch_id);
 create unique index peatio_trades_peatio_trade_id_idx on peatio_trades(peatio_trade_id);
 
-CREATE TABLE user_banks
+CREATE TABLE user_bank_info
   (
     id                        BIGINT NOT NULL auto_increment,
     user_uid                  VARCHAR(30) NOT NULL,
@@ -74,8 +74,9 @@ CREATE TABLE user_banks
     swift_code                VARCHAR(30) NOT NULL,
     bank_account_number       VARCHAR(30) NOT NULL,
     bank_branch               VARCHAR(30),
+    created_date              DATETIME NOT NULL,
     PRIMARY KEY (id)
   )
 engine = innodb;
 
-create index user_banks_user_uid_idx on user_banks(user_uid);
+create index user_bank_info_user_uid_idx on user_bank_info(user_uid);
