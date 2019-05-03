@@ -9,6 +9,10 @@ keychain:
   barong:
     algorithm: RS256
     value: <%= @jwt_public_key %>
+  applogic-java:
+    algorithm: RS256
+    value: LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUEwRjZod29WaFBpMEhYTjlsRUQrSgpORkY2YS9UVzVVRlFHZVU4MkpUMU9JeUo0VGsyazI1aHpUVjJLOFNKcCt0MTdOQjBkMWt0b09ranY3T1oyQnliCm5wUklXeEdUN29mS3JNMTFNenVSVkx5Zmc1Nyt2eGhlcHcvdmJSWFlqcUtMaEdyd205NFJDNFQzb0JlU0FYZ1EKRWI2eHJWQjgyZGl0NW1nOElvemNSY29GWVBNdjZCWFlJc1dWbzc3SVNYSDR0dlgzeFM3SVdPdlFXNTNjdzQ0bApGZFhQY1FMa1IyMXJJeFp1Yy9VUHJJSGp1ZVVmU0lIYVJPMy9YbUllbkl0ckFQNzZCcVM4VEZpWGx4Z2JaeVBFCkJwcm1RL1lva0pjRmFqbVJYNWtsbllHU0s4YXRWTWN6N2pCbU1XUmY5T0Yza0tod1Fsc1FoR0dxRkcvNEZVQi8KZHdJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+
 #
 # Keeps all the JWT verification options.
 # The documentation is available at https://github.com/jwt/ruby-jwt#support-for-reserved-claim-names.
@@ -30,17 +34,17 @@ jwt: {}
 #
 scopes:
   read_deposits:
-    permitted_signers: ['barong']
-    mandatory_signers: ['barong']
+    permitted_signers: ['barong', 'applogic-java']
+    mandatory_signers: ['applogic-java']
   write_deposits:
-    permitted_signers: ['barong']
-    mandatory_signers: ['barong']
+    permitted_signers: ['barong', 'applogic-java']
+    mandatory_signers: ['applogic-java']
   read_withdraws:
-    permitted_signers: ['barong']
-    mandatory_signers: ['barong']
+    permitted_signers: ['barong', 'applogic-java']
+    mandatory_signers: ['applogic-java']
   write_withdraws:
-    permitted_signers: ['barong']
-    mandatory_signers: ['barong']
+    permitted_signers: ['barong', 'applogic-java']
+    mandatory_signers: ['applogic-java']
   read_accounts:
-    permitted_signers: ['barong']
-    mandatory_signers: ['barong']
+    permitted_signers: ['barong', 'applogic-java']
+    mandatory_signers: ['applogic-java']

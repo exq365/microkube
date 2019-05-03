@@ -27,6 +27,8 @@ services:
       traefik.enable: true
       traefik.frontend.rule: 'Host: rabbitmq.<%= @config['app']['domain'] %>'
       traefik.port: 15672
+    ports:
+      - "5672:5672"
 
   vault:
     image: vault:0.10.2

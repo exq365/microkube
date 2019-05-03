@@ -6,8 +6,8 @@ ssl:
   enabled: true
   email: "support@example.com"
 images:
-  peatio: rubykube/peatio:2.0.35
-  barong: rubykube/barong:2.0.51
+  peatio: gcr.io/exq365-stage-218912/peatio:7e1822b
+  barong: rubykube/barong:2.1.4
   frontend: gcr.io/openware-production/baseapp:2.1.32
   tower: rubykube/tower:0.1.8
   postmaster: quay.io/openware/postmaster:0.0.6

@@ -80,3 +80,40 @@ CREATE TABLE user_bank_info
 engine = innodb;
 
 create index user_bank_info_user_uid_idx on user_bank_info(user_uid);
+
+CREATE TABLE referral_fee_batch
+(
+  id                 BIGINT NOT NULL auto_increment,
+  batch_id           VARCHAR(38) NOT NULL,
+  status             VARCHAR(30) NOT NULL,
+  created_date       DATETIME NOT NULL,
+  posted_date        DATETIME NULL,
+  PRIMARY KEY (id)
+)
+engine = innodb;
+
+create unique index referral_fee_batch_batch_id_idx on referral_fee_batch(batch_id);
+
+alter table referral_fee drop column status;
+
+alter table referral_fee modify column posted_date datetime NULL;
+alter table referral_fee modify column rank VARCHAR(30) NULL;
+
+alter table referral_fee add column downline_uid VARCHAR(30) NOT NULL;
+alter table referral_fee add column referral_fee_batch_id BIGINT NOT NULL;
+
+CREATE TABLE fiat_deposit
+(
+  id                  BIGINT NOT NULL auto_increment,
+  uid                 VARCHAR(30) NOT NULL,
+  remark              VARCHAR(255),
+  upload_path         VARCHAR(136),
+  filename            VARCHAR(100),
+  filename_uuid       VARCHAR(36),
+  deposit_tid         VARCHAR(30) NOT NULL,
+  created_date        DATETIME NOT NULL,
+  PRIMARY KEY (id)
+)
+engine = innodb;
+
+create unique index fiat_deposit_tid_idx on fiat_deposit(deposit_tid);
