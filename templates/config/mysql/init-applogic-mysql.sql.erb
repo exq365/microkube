@@ -117,3 +117,5 @@ CREATE TABLE fiat_deposit
 engine = innodb;
 
 create unique index fiat_deposit_tid_idx on fiat_deposit(deposit_tid);
+
+alter table fiat_deposit drop column upload_path;
