@@ -73,8 +73,6 @@ services:
     image: "<%= @config['images']['peatio'] %>"
     env_file:
       - ../config/ranger.env
-    ports:
-      - "8080:8080"
     command: bash -c "bundle exec peatio service start ranger"
 
   postmaster:
